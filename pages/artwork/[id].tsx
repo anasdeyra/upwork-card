@@ -12,6 +12,7 @@ import {
   Button,
   Group,
   Space,
+  Accordion,
 } from "@mantine/core";
 
 import Carrousel from "../../components/Carousel";
@@ -38,15 +39,25 @@ export default function ArtworkPage({ artworkData }: { artworkData: Artwork }) {
   const { classes } = useStyles();
 
   return (
-    <Box mt={"xl"} sx={{ display: "block" }}>
+    <Box my={"xl"} sx={{ display: "block" }}>
       <Box className={classes.container}>
-        <Image
-          //   className={classes.image}
-          src={artworkData.imageUrl}
-          alt={artworkData.title}
-          fit="cover"
-          radius="md"
-        />
+        <Stack>
+          <Image
+            //   className={classes.image}
+            src={artworkData.imageUrl}
+            alt={artworkData.title}
+            fit="cover"
+            radius="md"
+          />
+          <Accordion>
+            <Accordion.Item value="Description">
+              <Accordion.Control>Description</Accordion.Control>
+              <Accordion.Panel>
+                <Text>{artworkData.description}</Text>
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
+        </Stack>
 
         <Stack miw={400} spacing={0}>
           <Group position="apart">
@@ -81,6 +92,7 @@ export default function ArtworkPage({ artworkData }: { artworkData: Artwork }) {
           </Stack>
         </Stack>
       </Box>
+
       <Space mt={"xl"} />
       <Carrousel images={artworkData.otherArtworkImages} />
     </Box>
