@@ -4,17 +4,21 @@ import { Image } from "@mantine/core";
 export default function Carousel({ images }: { images: string[] }) {
   return (
     <C
-      withIndicators
       height={200}
-      slideSize="33.333333%"
+      slideSize="25%"
+      breakpoints={[
+        { maxWidth: "xs", slideSize: "100%", slideGap: 2 },
+        { maxWidth: "sm", slideSize: "50%", slideGap: 4 },
+        { maxWidth: "md", slideSize: "33.33333%", slideGap: "xs" },
+        { minWidth: "xl", slideSize: "20%", slideGap: "md" },
+      ]}
       slideGap="md"
       loop
       align="start"
-      slidesToScroll={3}
     >
       {images.map((image, i) => (
         <C.Slide key={i}>
-          <Image src={image} />
+          <Image height={220} src={image} />
         </C.Slide>
       ))}
     </C>

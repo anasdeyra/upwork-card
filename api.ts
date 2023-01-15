@@ -7,13 +7,9 @@ const api = axios.create({
 });
 
 export async function getArtwork(id: number) {
-  const response = await api.get<Artwork>(
+  const { data } = await api.get<Artwork>(
     `/ya-misc/interviews/front/examples/${id}.json`
   );
 
-  if (response.status !== 200) {
-    return defaultArtwork;
-  }
-
-  return response.data;
+  return data;
 }

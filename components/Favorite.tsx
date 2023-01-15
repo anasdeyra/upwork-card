@@ -1,4 +1,4 @@
-import { MdStar, MdStarOutline } from "react-icons/md";
+import { FaStar, FaRegStar } from "react-icons/fa";
 import { ActionIcon } from "@mantine/core";
 import { useToggle } from "@mantine/hooks";
 
@@ -12,7 +12,7 @@ export default function Favorite() {
       color={isFavorite ? "yellow" : "gray"}
       variant="transparent"
     >
-      {isFavorite ? <MdStar size={24} /> : <MdStarOutline size={24} />}
+      {isFavorite ? <FaStar size={20} /> : <FaRegStar size={20} />}
     </ActionIcon>
   );
 }
