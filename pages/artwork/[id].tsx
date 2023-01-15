@@ -65,6 +65,15 @@ export default function ArtworkPage({ artworkData }: { artworkData: Artwork }) {
       <Head>
         <title>{artworkData.title}</title>
         <meta name="description" content={artworkData.description} />
+        //seo image
+        <meta property="og:image" content={artworkData.imageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={artworkData.title} />
+        <meta property="og:title" content={artworkData.title} />
+        <meta property="og:description" content={artworkData.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Artwork" />
       </Head>
       <Box my={"xl"} sx={{ display: "block" }}>
         {/* Image section  */}
@@ -145,13 +154,13 @@ export default function ArtworkPage({ artworkData }: { artworkData: Artwork }) {
 
             {/* Year  */}
             <Text mt={"md"} weight={"bold"} size={"sm"}>
-              {artworkData.category.toLocaleLowerCase()},
+              {artworkData.category.toLocaleLowerCase()},{" "}
               {artworkData.creationYear}
             </Text>
 
             {/* Dimensions  */}
             <Text mt={4} weight={"bold"} size={"sm"}>
-              {artworkData.dimensions.width} W x {artworkData.dimensions.height}
+              {artworkData.dimensions.width} W x {artworkData.dimensions.height}{" "}
               H x {artworkData.dimensions.depth} D in
             </Text>
 
