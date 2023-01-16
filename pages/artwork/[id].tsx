@@ -24,8 +24,7 @@ import {
   FaTruck,
   FaMapMarkerAlt as MapPin,
 } from "react-icons/fa";
-
-import DefaultArtwork from "../../default.json";
+import BreadCrumbs from "../../components/BreadCrumbs";
 
 const useStyles = createStyles((t) => ({
   container: {
@@ -65,7 +64,6 @@ export default function ArtworkPage({ artworkData }: { artworkData: Artwork }) {
       <Head>
         <title>{artworkData.title}</title>
         <meta name="description" content={artworkData.description} />
-        //seo image
         <meta property="og:image" content={artworkData.imageUrl} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -76,6 +74,29 @@ export default function ArtworkPage({ artworkData }: { artworkData: Artwork }) {
         <meta property="og:site_name" content="Artwork" />
       </Head>
       <Box my={"xl"} sx={{ display: "block" }}>
+        <BreadCrumbs
+          items={[
+            {
+              title: "Home",
+              href: "/",
+            },
+            {
+              title: "Paintings",
+              href: "/paintings",
+            },
+
+            {
+              title: `${artworkData.artistShort.fullname} Artworks`,
+              href: `/artist/${artworkData.artistId}/artworks`,
+            },
+
+            {
+              title: artworkData.title,
+              href: `/artwork/${artworkData._id}`,
+            },
+          ]}
+        />
+        <Space mt={"md"} />
         {/* Image section  */}
         <Box className={classes.container}>
           <Stack className={classes.imageContainer}>
